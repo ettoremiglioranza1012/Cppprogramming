@@ -34,7 +34,48 @@ void ex_2() {
     cout << endl;
 }
 
+void ex_3() {
+    constexpr size_t sz = 5;
+    int data[sz] = {0,1,2,3,4};
+    int *p = data;
+    int *plast = p + (sz-1);
+    for (; p < plast; ++p) {
+        *p = 0;
+        cout << *p << endl;
+    }
+    
+}
+
+void ex_4() {
+    constexpr size_t sz = 5;
+    int arr1[sz] = {0,1,2,3,4};
+    int arr2[sz] = {0,1,2,3,5};
+    int *p1 = arr1, *p2 = arr2;
+    int *plast = p1 + (sz-1);
+    while (*p1 == *p2) {
+        if (p1 == plast || p2 == plast) {
+            cout << "Arrays are equal" << endl;
+            return;
+        }
+        ++p1; ++p2;
+    }
+    cout << "Arrays are not equal" << endl;
+
+    vector<int> ivec1 = {1,1,1};
+    vector<int> ivec2 = {1,1,1};
+    auto it1 = ivec1.cbegin(), it2 = ivec2.cbegin();
+    auto end1 = ivec1.cend(), end2 = ivec2.cend();
+    while (*it1 == *it2) {
+        if (it1 == end1 || it2 == end2) {
+            cout << "Vector are equal" << endl;
+            return;
+        }
+        ++it1; ++it2;
+    }
+    cout << "Vectors are not equal" << endl;
+}
+
 int main() {
-    ex_2();
+    ex_4();
     return 0;
 }
